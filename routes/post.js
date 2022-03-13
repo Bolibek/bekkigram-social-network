@@ -24,13 +24,7 @@ router.get('/getsubspost', login, (req, res) => {
       console.log(err)
     })
 })
-// router.get("/getsubsposts", login, (req, res) => {
-//   Post.find({ postedBy: { $in: req.user.following } })
-//     .populate("postedBy", "_id, name")
-//     .populate("comments.postedBy", "_id, name")
-//     .then((posts) => res.json({ posts }))
-//     .catch((err) => console.log(err));
-// });
+
 
 router.post("/createpost", login,(req, res) => {
   const {title, body, pic} = req.body

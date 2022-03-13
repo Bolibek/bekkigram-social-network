@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
-const { MONGO_URI } = require(".//config/key");
+const { MONGO_URI } = require("./config/key");
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(MONGO_URI);
