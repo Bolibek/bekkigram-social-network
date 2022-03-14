@@ -206,7 +206,7 @@ export default function Profile() {
                 className="btn #0d47a1 blue darken-4"
                 onClick={() => setIsOpenModal(false)}
               >
-                Save Image
+                Save Profile
               </button>
             </div>
           </div>
