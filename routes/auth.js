@@ -5,7 +5,6 @@ const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = require("../config/key")
-const login = require("../middleware/login")
 
 router.post("/signup", (req, res) => {
   const { name, email, password, pic } = req.body;
@@ -22,7 +21,7 @@ router.post("/signup", (req, res) => {
       }
       bcrypt.hash(password, 10)
         .then(hashedPass => {
-          const user = new User({ email, name, password: hashedPass, pic: "https://res.cloudinary.com/bolibekjnfjenfjnfjnfpjnfjnfenkjfwjf/image/upload/v1647139365/User_Avatar_2_zic9un.png"});
+          const user = new User({ email, name, password: hashedPass, pic});
           user
             .save()
             .then((user) => {

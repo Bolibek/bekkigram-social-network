@@ -108,11 +108,13 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((result) => {
-        const newData = data.filter((s) => s._id !== result._id);
-        setData(data.filter((s) => s._id !== result._id));
+        console.log(result)
+        const newData = data.filter((s) => s._id !== result)
+        setData(newData);
       })
       .catch((err) => console.log(err));
   };
+  console.log(data)
   return (
     <div className="home">
       <div className="post__items">
@@ -121,7 +123,7 @@ export default function Home() {
             .map((item) => {
               return (
                 <div className="card" key={item._id}>
-                  <Link to={ item.postedBy._id !== state._id? `/profile/${item.postedBy._id}` : "/profile"}>
+                  <Link to={item.postedBy._id !== state._id ? `/profile/${item.postedBy._id}` : "/profile"}>
                     <p className="card-title postedBy">{item.postedBy.name}</p>
                   </Link>
                   <div className="card-image">
@@ -154,12 +156,15 @@ export default function Home() {
                     </a>
                     <a href="#">
                       {item.postedBy._id === state._id && (
+
                         <i
                           onClick={() => deletePost(item._id)}
                           className="material-icons"
                         >
                           delete_forever
                         </i>
+
+
                       )}
                     </a>
                     <p>{item.likes.length} likes</p>
